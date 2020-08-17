@@ -1,20 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+// Image, StyleSheet, Text, TouchableOpacity, View => called component 
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 // import logo from './assets/logo.png'
+import * as ImagePicker from 'expo-image-picker';
 
 export default function App() {
+  let openImagePickerAsync = async () => {
+    let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+    if (permissionResult.granted === false){
+      alert("Permission to access camera roll is required!")
+      return;
+    }
+
+    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+    console.log(pickerResult);
+  }
+
   return (
     <View style={styles.container}>
       {/* Image component는 명확하게 width,height를 명시해줘야 한다. 일반적으로 RN에서 사진 width:305 */}
       <Image source={{uri: "https://i.imgur.com/TkIrScD.png"}} style={styles.logo}/>
 
+      {/* Text => called component */}
       <Text style={styles.instructions}> 
       To share a photo from your phone with a friend, just press the button below!
       </Text>
 
       <TouchableOpacity
-        onPress={() => alert('Hello, world!')}
+        onPress={openImagePickerAsync}
         style={styles.button}>
         <Text style={styles.buttonText}>Pick a photo</Text>
         </TouchableOpacity>
