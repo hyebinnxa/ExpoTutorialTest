@@ -6,6 +6,8 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function App() {
+  const [selectedImage, setSelectedImage] = React.useState(null);
+
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
@@ -15,7 +17,23 @@ export default function App() {
     }
 
     let pickerResult = await ImagePicker.launchImageLibraryAsync();
-    console.log(pickerResult);
+
+  if (pickerResult.cancelled === true) {
+    return;
+  }
+
+  setSelectedImage({localUri: pickerResult.uri});
+  };
+
+  if (selectedImage !== null){
+    return (
+      <View wtyle={styles.container}>
+        <Image
+        source={{uri: selectedImage.localUri}}
+        style={styles.thumbnail}
+        />
+      </View>
+    );
   }
 
   return (
@@ -67,4 +85,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
   }, 
+  thumbnail: {
+    width: 300,
+    height: 300,
+    resizeMode: "contain"
+  }
 });
