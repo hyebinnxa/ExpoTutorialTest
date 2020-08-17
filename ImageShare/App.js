@@ -26,7 +26,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -38,18 +38,19 @@ const styles = StyleSheet.create({
   },
   instructions: {
     color:'#888', 
-    fontSize:18,
+    fontSize:19,
     // space around the edges of the screen
-    marginHorizontal: 15,
+    marginHorizontal: 31,
+    marginBottom: 10,
   },
   button: {
-    backgroundColor: "blue",
+    backgroundColor: "pink",
     // padding : RN layout system 큰 components||다른 components들과의 배치 방법 (=flexbox)
-    padding: 20,
+    padding: 10,
     borderRadius: 5,
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: 22,
     color: '#fff',
   }, 
 });
