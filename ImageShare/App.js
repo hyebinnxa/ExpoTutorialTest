@@ -15,8 +15,8 @@ export default function App() {
 
       <TouchableOpacity
         onPress={() => alert('Hello, world!')}
-        style={{ backgroundColor: 'blue' }}>
-        <Text style={{ fontSize: 20, color: '#fff' }}>Pick a photo</Text>
+        style={styles.button}>
+        <Text style={styles.buttonText}>Pick a photo</Text>
         </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
@@ -42,4 +42,14 @@ const styles = StyleSheet.create({
     // space around the edges of the screen
     marginHorizontal: 15,
   },
+  button: {
+    backgroundColor: "blue",
+    // padding : RN layout system 큰 components||다른 components들과의 배치 방법 (=flexbox)
+    padding: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: '#fff',
+  }, 
 });
